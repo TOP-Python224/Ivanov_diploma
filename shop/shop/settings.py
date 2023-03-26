@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
+# УДАЛИТЬ: импорт модуля os — для работы с путями используйте объекты Path из пакета pathlib
 import os
 from pathlib import Path
 
@@ -118,6 +119,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = '/static/'
+# КОММЕНТАРИЙ: изучайте стандартную библиотеку и всегда делайте поправку на актуальность для фрагментов кода, которые заимствуете из разнообразных открытых источников
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATICFILES_DIRS = []
 

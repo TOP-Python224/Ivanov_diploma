@@ -9,26 +9,36 @@ from .models import *
 
 def index(request):
     product = Product.objects.all()
-    return render(request, 'catalog/index.html', {'product' : product})
+    return render(request, 'catalog/index.html', {'product': product})
+
 
 def other_page(request, page):
     way = f'catalog/{page}.html'
     return render(request, way)
 
+
 @login_required
 def payment(request):
     return render(request, 'catalog/payment.html')
 
+
 def feedback(request):
     return render(request, 'catalog/feedback.html')
+
 
 @login_required
 def profile(request):
     return render(request, 'catalog/profile.html')
 
 
+# СДЕЛАТЬ: представления, имеющие отношение к авторизации и аутентификации лучше выносить в отдельное django приложение (см. соответствующую лекцию)
+
 class ShopLoginView(LoginView):
     template_name = 'catalog/login.html'
 
+
 class ShopLogoutView(LoginRequiredMixin, LogoutView):
     template_name = 'catalog/logout.html'
+
+
+# ДОБАВИТЬ: регистрацию
