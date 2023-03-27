@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+from django.db.models import Q
 
 
 # СДЕЛАТЬ: модели, имеющие отношение к авторизации и аутентификации лучше выносить в отдельное django приложение (см. соответствующую лекцию)
@@ -18,7 +19,11 @@ class Product(models.Model):
     content = models.TextField(null=True, blank=True, verbose_name='Описание')
     # ИСПРАВИТЬ здесь и далее: согласно налоговому законодательству (приказ от 14 сентября 2020 г. N ЕД-7-20/662@) для хранения и использования денежных величин в информационно-технических системах необходимо использовать числа с фиксированной, а не плавающей точкой
     # ИСПРАВИТЬ: не рекомендую допускать запись в таблицу товарных позиций с отсутствующей, или нулевой, или отрицательной ценой
-    price = models.FloatField(null=True, blank=True, verbose_name='Цена')
+    price = models.DecimalField(
+        max_digits=8,
+        decimal_places=2,
+        verbose_name='Цена',
+    )
     # КОММЕНТАРИЙ: возможно, есть резон хранить историю изменения цен — это можно сделать в отдельной таблице, а значения для полей price и old_price получать запросами
     old_price = models.FloatField(null=True, blank=True, verbose_name='Старая цена')
     published = models.DateTimeField(auto_now_add=True, db_index=True, verbose_name='Дата')
@@ -31,6 +36,12 @@ class Product(models.Model):
         verbose_name_plural = 'Товар'
         verbose_name = 'Товар'
         ordering = ['-published']
+        constraints = [
+            models.CheckConstraint(
+                name='price_gt_zero',
+                check=Q(price__gt=0),
+            )
+        ]
 
 
 class Rubric(models.Model):
