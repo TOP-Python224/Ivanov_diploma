@@ -1,0 +1,51 @@
+{% extends 'catalog/base.html' %}
+{% load static %}
+
+{% block title %}Главная {% endblock %}
+
+{% block content %}
+
+<section class="main-content">
+  <div class="container">
+    <div class="row">
+
+      {% for p in product %}
+        <div class="col-lg-4 col-sm-6 mb-3 ">
+          <div class="product-cart ">
+            <div class="product-thumb">
+              <a href="#"><img src="{{p.photo.url}}" alt=""></a>
+            </div>
+            <div class="product-details">
+              <h4><a href="{% url 'catalog:products' p.id %}">{{ p.title }}</a></h4>
+              <p>{{ p.content }}</p>
+              <div class="product-bottom-details d-flex justify-content-between">
+                <div class="product-price">
+                  <small>{{p.old_price}}</small> {{ p.price }}
+                </div>
+                {% if user.is_authenticated %}
+                  <form method="get" action="{% url 'catalog:payment' %}">
+                    <button type="submit" class="btn btn-danger">Купить</button>
+                  </form>
+                {% else %}
+                  <form method="get" action="{% url 'catalog:login' %}">
+                    <button type="submit" class="btn btn-danger" >Купить</button>
+                  </form>
+                {% endif %}
+                
+                <div class="product-links">
+                  <form  method="post" action="{% url 'cart:cart_add' p.id %}">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger"><i class="fas fa-shopping-cart"></i></button>
+                  </form>
+                  
+                </div>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+       {% endfor %}   
+    </div>
+  </div>
+</section>
+{% endblock %}

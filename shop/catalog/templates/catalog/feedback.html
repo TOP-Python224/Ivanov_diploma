@@ -1,0 +1,20 @@
+{% extends 'catalog/base.html' %}
+{% load static %}
+
+{% block title %}О сайте{% endblock %}
+
+{% block content %}
+
+<form class="forms" action="{% url 'catalog:messages' %}" method="GET">
+    {% csrf_token %}
+    <fieldset>
+    <legend>Текстовые поля</legend>
+    <label> Ваше имя: <input type="text" placeholder="Имя" name="name" required></input></label>
+    <label> Ваш email: <input type="email" placeholder="Email" name="email" required></input></label>
+    <label>Текст сообщения:</label>
+    <label><textarea placeholder="Введите ваше сообщение" name="text" required></textarea><label>
+    <label><button type="submit">Отправить</button> <button type="reset">Очистить</button></label>
+    </fieldset>
+</form>
+     
+{% endblock %}
