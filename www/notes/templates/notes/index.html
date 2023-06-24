@@ -1,0 +1,29 @@
+{% extends 'notes/base.html' %}
+{% load notes_tags %}
+
+{% block content %}
+        {% filter_cat as sear %}
+        {% for a in sear %}
+            <div class="card">
+                <img src="" alt="">
+                <h1>{{a.title}}</h1>
+                <p class="cart1">{{a.text}}</p>
+                <form action="{{a.get_absolute_url}}" target="_self">
+                    <button>Читать</button>
+                </form>
+            </div>
+            <br>
+        {% endfor %}
+        <nav class="pag">
+            <ul class="page">
+                {% for p in sear.paginator.page_range %}
+                    {% if pg == p %}
+                        <li class="page-color">{{p}}</li>
+                    {% else %}
+                        <li><a href="?page={{p}}">{{p}}</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+            
+        </nav>
+{% endblock %}

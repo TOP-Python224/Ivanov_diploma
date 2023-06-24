@@ -1,0 +1,46 @@
+{% extends 'notes/base.html' %}
+
+{% block content %}
+        <div>
+            <h1>{{articles.title}}</h1>
+            <p>{{articles.text}}</p>
+            <p>{{articles.time_create}}</p>
+            <p>Автор {{articles.author}}</p>
+            {% if articles.photo %}
+                <div><img height="400px" src="{{articles.photo.url}}" alt=""></div>
+            {% endif %}
+        </div>
+
+        <br>
+        <br>
+        <div>
+            {% if request.user.is_authenticated %}
+                <h1>Комментарии</h1>
+                <form method="post">
+                    {% csrf_token %}
+                    {{form.as_p}}
+                    <button type="submit">Отправить</button>
+                    </form>
+            {% else %}
+                    <span>Что бы оставить коментарии зарегестрируйтесь</span>
+            {% endif %}
+        </div>
+        <br>
+        <div class="colores">
+            {% for i in comment %}
+            <div class='cool'>
+            <p>{{i.text}}</p>
+            <p>{{i.author}}</p>
+            <p>{{i.create_data}}</p>
+            {% if request.user.pk == i.author.pk %}
+                <form method="post" action="{% url 'del_com' i.pk %}">
+                    {% csrf_token %}
+                    <button>Удалить</button>
+                </form>
+            {% endif %}
+            </div>
+            <br>
+            {% endfor %}
+        </div>
+        <br>
+{% endblock %}
