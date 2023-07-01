@@ -1,0 +1,24 @@
+{% extends 'notes/base.html' %}
+
+{% block content %}
+<h1>Моя страничка</h1>
+{% for i in artic %}
+<div class="delArt">
+    <div class="title"><a href="{{i.get_absolute_url}}">{{i.title}}</a></div>
+    <div class="correct">
+        <form method="get" action="{% url 'correct' i.pk %}">
+            
+            <button>Правка</button>
+        </form>
+        
+    </div>
+    <div>
+        <form method="get" action="{% url 'delete_articles' i.pk %}">
+            {% csrf_token %}
+            <button>Удалить</button>
+        </form>
+    </div>
+</div>
+<br>
+{% endfor %}
+{% endblock %}

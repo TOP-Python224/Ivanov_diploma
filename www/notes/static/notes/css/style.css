@@ -1,0 +1,160 @@
+body {
+    font-family: 'Lato', sans-serif;
+    background: url('https://catherineasquithgallery.com/uploads/posts/2021-02/1613343793_917-p-bezhevii-fon-1187.jpg');
+    padding: 100px 0;
+}
+
+h1 {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.container {
+    width: 1100px;
+    min-height: 800px;
+    border: 10px solid rgb(255, 255, 255);
+    margin: 0 auto;
+    background: #fff;
+}
+
+.header {
+    display: flex;
+    height: 200px;
+}
+
+.title-block {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    height: 100%;
+    font-size: 30px;
+    background: url('https://getwallpapers.com/wallpaper/full/4/9/7/1410913-forest-desktop-backgrounds-2560x1600-mobile.jpg') no-repeat center center / cover;
+    color: #fff;
+    margin-right: 10px;
+}
+
+.userpic {
+    display: flex;
+    height: 100%;
+    width: 20%;
+    background: url('https://wallbox.ru/wallpapers/main/201522/68ff6e9b210e03b.jpg') no-repeat center center / cover;
+    color: #fff;
+}
+
+.nav ul {
+    display: flex;
+    background: #b3a9a9;
+    margin: 10px 0;
+}
+
+.nav li a {
+    display: flex;
+    padding: 20px;
+    text-decoration: none;
+    color: rgb(19, 20, 20);
+    font-weight: bold;
+    border-right: 1px solid rgb(122, 127, 131);
+    transition: background .3s ease;
+}
+
+.nav li a:hover {
+    background: #464242;
+}
+
+.content-wrapper {
+    display: flex;
+}
+
+.content {
+    width: 70%;
+    padding: 20px;
+}
+
+
+.card {
+    background-color: aqua;
+    padding: 10px;
+    
+}
+
+.cart1 {
+    height: 100px;
+	overflow: hidden;
+}
+
+
+* {box-sizing: border-box; margin: 0;}
+.widget {
+    width: 30%;
+  padding: 20px 30px;
+  background: rgb(108, 218, 163);
+  font-family: 'Roboto', sans-serif;
+  height: 100%
+}
+.widget-title {
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #222;
+  font-size: 16px;
+  padding-left: 15px;
+  margin-bottom: 15px;
+  border-left: 2px solid #b99d61;
+}
+.widget-list {
+  padding: 0;
+  list-style: none;
+}
+.widget-list a:before {
+  content: "\2014";
+  margin-right: 14px;
+}
+.widget-list a {
+  text-decoration: none;
+  outline: none;
+  display: block;
+  padding: 6px 0; 
+  letter-spacing: 1px;
+  font-weight: 300;
+  color: #444;
+  transition: .3s linear;
+}
+.widget-list a:hover {color: #b99d61;}
+
+
+.page li {
+    display: inline;
+}
+
+.pag {
+    text-align: center;
+vertical-align: middle;
+line-height: 90px;     
+}
+
+.page-color {
+    color:rgb(218, 108, 108)
+}
+
+
+.delArt{
+    background: rgb(166, 168, 166);
+}
+
+.title {
+    float: left;
+    width: 70%;
+}
+
+.colores {
+    background-color: aqua;
+}
+
+.cool {
+    background-color: rgb(0, 255, 221);
+}
+
+.correct {
+    float: right;
+}

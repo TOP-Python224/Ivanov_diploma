@@ -1,0 +1,10 @@
+{% extends 'notes/base.html' %}
+
+{% block content %}
+
+<form method="post" action="{% url 'correct' id %}" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button>Сохранить</button>
+</form>
+{% endblock %}

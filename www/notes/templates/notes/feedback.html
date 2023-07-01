@@ -1,0 +1,12 @@
+{% extends 'notes/base.html' %}
+
+{% block content %}
+<h1>Обратная связь</h1>
+<form method="post">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button>Отправить</button>
+</form>
+<br>
+<p>*все сообщения рассматриваются в течении 24 часов, ожидайте ответа на электронную почту</p>
+{% endblock %}
